@@ -1,104 +1,78 @@
-import Classes
-import Obj
+import Base
 
-def CadLivros():
-    code = input("Codigo do livro: ")
-    if code in Obj.books:
-        print("Livro já cadastrado")
+def ListarLivros():
+    livros = Base.CarregaLivros()
+
+    if not livros:
+        print("Não há livros no banco de dados.")
         return
-    titulo = input("Titulo: ")
-    editora = input("editora: ")
-    area = input("area: ")
-    ano = int(input("ano: "))
-    valor = float(input("valor R$: "))
-    estoque = int(input("estoque: "))
-
-    NovoLivro = Classes.Livros(titulo, code, editora, area, ano, valor, estoque)
-    Obj.books[code] = NovoLivro
-
-    print("Feito!")  
-
-def Listar():
-    if not Obj.books:
-        print("Não existem livros cadastrados")
-        return
-    for code, livro in Obj.books.items():
-        print("Code")   
+    for livro in livros.values():
+        print(livro)
+        
 
 def BuscaNome():
-    nome = input("Digite o nome do livro: ").lower()
+    livros = Base.CarregaLivros()
+    nome_busca = input("Digite o nome do livro que deseja buscar: ").lower()
     
-    encontrados = [Obj.books for Classes.titulo in Obj.books.values() if nome in Classes.titulo.lower()]
-
-    if not encontrados:
-        print("Nenhum livro encontrado")
-        return
+    encontrados = [livro for livro in livros.values() if nome_busca in livro.titulo.lower()]
     
-    # print("Livros:")
-    # for Obj.books in encontrados:
-    #     print(titulo)
-
+    if encontrados:
+        for livro in encontrados:
+            print(livro)
+    else:
+        print("Nenhum livro encontrado com esse nome.")
 
 def BuscaCat():
-    categoria = input("Digite a categoria: ").lower()
+    livros = Base.CarregaLivros()
+    catega = input("Digite a cadegoria do livro para buscar: ")
 
-    encontrados = [Classes.titulo for Classes.titulo in Obj.books.values() if categoria in Classes.titulo.area.lower()]
-    
-# def BuscaPrice():
-    
-# def BuscaEstoque():
+    encontrados = [livro for livro in livros.values() if catega.lower() in livro.area.lower()]
 
-# def BuscaValue():
+    if encontrados:
+        for livro in encontrados:
+            print(livro)
+            print("-" * 30)
+    else:
+        print("Livro nao encontrado nessa categoria")
 
+  
+def BuscaPrice():
+    livros = Base.CarregaLivros()
+    maxp = float(input("Digite o valor maximo: "))
+    print("-" * 30)
 
-# # Função para buscar livros por categoria (área)
-# def buscar_por_categoria():
-#     """Filtra livros pela área (categoria)."""
-#     categoria = input("Digite a categoria: ").lower()
+    encontrados = [livro for livro in livros.values() if livro.valor <= maxp]
 
-#     encontrados = [livro for livro in livros.values() if categoria in livro.area.lower()]
+    if encontrados:
+        for livro in encontrados:
+            print(livro)
+            print("-" * 30)
+    else: 
+        print("Nao achamos livro mais barato que o valor informado")
 
-#     if not encontrados:
-#         print("⚠ Nenhum livro encontrado nessa categoria.")
-#         return
+def BuscaEstoque():
+    livros = Base.CarregaLivros()
+    estoque_min = int(input("Digite a quantidade mínima em estoque: "))
 
-#     print("\n📚 LIVROS DA CATEGORIA:")
-#     for livro in encontrados:
-#         print(livro)
+    encontrados = [livro for livro in livros.values() if livro.estoque >= estoque_min]
 
-# # Função para buscar livros abaixo de um preço definido pelo usuário
-# def buscar_por_preco():
-#     """Exibe livros com preço menor que um valor informado."""
-#     preco_max = float(input("Digite o valor máximo (R$): "))
+    if encontrados:
+        for livro in encontrados:
+            print(livro)
+            print("-" * 30)
+    else:
+        print("Nenhum livro encontrado com esse estoque.")
 
-#     encontrados = [livro for livro in livros.values() if livro.valor < preco_max]
+def  BuscaValue():
+    livros = Base.CarregaLivros()
+    valor_min = float(input("Digite o valor mínimo total de estoque: "))
 
-#     if not encontrados:
-#         print("⚠ Nenhum livro encontrado abaixo desse preço.")
-#         return
+    # descobri esse formato que me faz perder menos tempo pra por tudo em uma linha de codigo, usando 
+    encontrados = [livro for livro in livros.values() if (livro.estoque * livro.valor) >= valor_min]
 
-#     print("\n📚 LIVROS ABAIXO DO PREÇO:")
-#     for livro in encontrados:
-#         print(livro)
-
-# # Função para buscar livros com estoque acima de um valor definido
-# def buscar_por_estoque():
-#     """Exibe livros que possuem quantidade em estoque maior que o indicado pelo usuário."""
-#     estoque_min = int(input("Digite o estoque mínimo: "))
-
-#     encontrados = [livro for livro in livros.values() if livro.estoque > estoque_min]
-
-#     if not encontrados:
-#         print("⚠ Nenhum livro encontrado com estoque maior que esse valor.")
-#         return
-
-#     print("\n📚 LIVROS COM ESTOQUE MAIOR QUE", estoque_min)
-#     for livro in encontrados:
-#         print(livro)
-
-# # Função para calcular o valor total do estoque
-# def calcular_valor_total():
-#     """Calcula e exibe o valor total de todos os livros em estoque."""
-#     total = sum(livro.valor * livro.estoque for livro in livros.values())
-
-#     print(f"\n💰 Valor total em estoque: R$ {total:.2f}")
+    if encontrados:
+        for livro in encontrados:
+            print(livro)
+            print("-" * 30)
+    else:
+        print("Nenhum livro encontrado com esse valor de estoque.")

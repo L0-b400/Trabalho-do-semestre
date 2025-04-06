@@ -1,3 +1,4 @@
+import Base
 import Functions
 
 def menu():
@@ -11,18 +12,20 @@ def menu():
         print()
         print("3 - Buscar por Nome")
         print("4 - Buscar por Categoria")
-        print("5 - Buscar por Preço")
+        print("5 - Buscar por Preço (abaixo do informado)")
         print("6 - Buscar por Estoque")
-        print("7 - Buscar por Total do Estoque em R$")
+        # print("7 - Buscar por Total do Estoque em R$")
         print()
         print("0 - Para finalizar o sitema")
 
         op = input("Digite a opção desejada: ")
+        print("-" * 30)
+        print()
 
         if op == "1":
-            Functions.CadLivros()
+            Base.AddLivros()
         elif op == "2":
-            Functions.Listar()
+            Functions.ListarLivros()
         elif op == "3":
             Functions.BuscaNome()
         elif op == "4":
@@ -31,7 +34,11 @@ def menu():
             Functions.BuscaPrice()
         elif op == "6":
             Functions.BuscaEstoque()
-        elif op == "7":
-            Functions.BuscaValue()
+        # elif op == "7":
+        #     Functions.BuscaValue()
         elif op == "0":
-            Functions.Sair()
+           print("saindo")
+           break
+
+if __name__ == "__main__":
+    menu()
