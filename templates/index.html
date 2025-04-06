@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Software de Livros do Jack</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Livro</h2>
+        <form action="/cadastro" method="POST">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+            
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo" required>
+            
+            <label for="editora">Editora:</label>
+            <input type="text" id="editora" name="editora" required>
+            
+            <label for="area">Área:</label>
+            <input type="text" id="area" name="area" required>
+            
+            <label for="ano">Ano:</label>
+            <input type="number" id="ano" name="ano" required>
+            
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor" name="valor" required>
+            
+            <label for="estoque">Estoque:</label>
+            <input type="number" id="estoque" name="estoque" required>
+            
+            <button type="submit">Salvar</button>
+        </form>
+
+        <h2>Buscar Livro</h2>
+        <form action="/busca" method="POST">
+            <label for="codigo_busca">Código do Livro:</label>
+            <input type="text" id="codigo_busca" name="codigo_busca" required>
+            <button type="submit">Buscar</button>
+        </form>
+
+        {% if livro %}
+            <h3>Resultado da Busca:</h3>
+            <p>{{ livro }}</p>
+        {% endif %}
+        
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
