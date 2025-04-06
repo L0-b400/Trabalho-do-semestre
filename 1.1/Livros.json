@@ -1,0 +1,29 @@
+{
+    "Percy Jackson e o ladrao de raios": {
+        "titulo": "Percy Jackson e o ladrao de raios",
+        "code": "0001",
+        "edit": "Intrínseca",
+        "area": "Fic",
+        "ano": "2014",
+        "valor": 69.9,
+        "estoque": 10
+    },
+    "Eu Sou o Numero 4": {
+        "titulo": "Eu Sou o Numero 4",
+        "code": "0002",
+        "edit": "Seila",
+        "area": "Fic",
+        "ano": "2010",
+        "valor": 70.9,
+        "estoque": 20
+    },
+    "os bes": {
+        "titulo": "os bes",
+        "code": "0003",
+        "edit": "dosbe",
+        "area": "amor",
+        "ano": "1999",
+        "valor": 200.0,
+        "estoque": 1
+    }
+}
