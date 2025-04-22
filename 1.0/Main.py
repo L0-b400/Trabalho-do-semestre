@@ -1,44 +1,46 @@
-import Base
+import Classes
 import Functions
 
-def menu():
+def menu(bib):
     while True:
-        print("Bem vindo a livraria do papi")
-        print("selecione uma das opções a baixo")
+        print("Bem vindo à livraria do papi")
+        print("Selecione uma das opções abaixo")
         print()
-        print("1 - Cadatrar Livro")
+        print("1 - Cadastrar Livro")
         print("2 - Listar")
-        print("Para Buscas, digite um dos codigos a baixo:")
-        print()
+        print("Para Buscas, digite um dos códigos abaixo:")
         print("3 - Buscar por Nome")
         print("4 - Buscar por Categoria")
         print("5 - Buscar por Preço (abaixo do informado)")
         print("6 - Buscar por Estoque")
-        # print("7 - Buscar por Total do Estoque em R$")
+        print("7 - Buscar por Total do Estoque em R$")
+        print("0 - Para finalizar o sistema")
         print()
-        print("0 - Para finalizar o sitema")
 
         op = input("Digite a opção desejada: ")
         print("-" * 30)
         print()
 
         if op == "1":
-            Base.AddLivros()
+            bib.adicionar()
         elif op == "2":
-            Functions.ListarLivros()
+            Functions.ListarLivros(bib)
         elif op == "3":
-            Functions.BuscaNome()
+            Functions.BuscaNome(bib)
         elif op == "4":
-            Functions.BuscaCat()
+            Functions.BuscaCat(bib)
         elif op == "5":
-            Functions.BuscaPrice()
+            Functions.BuscaPrice(bib)
         elif op == "6":
-            Functions.BuscaEstoque()
-        # elif op == "7":
-        #     Functions.BuscaValue()
+            Functions.BuscaEstoque(bib)
+        elif op == "7":
+            Functions.BuscaValue(bib)
         elif op == "0":
-           print("saindo")
-           break
+            print("Saindo")
+            break
+        else:
+            print("Opção inválida.")
 
 if __name__ == "__main__":
-    menu()
+    biblioteca = Classes.Biblioteca()
+    menu(biblioteca)

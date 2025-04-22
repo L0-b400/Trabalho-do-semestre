@@ -25,5 +25,14 @@
         "ano": "1999",
         "valor": 200.0,
         "estoque": 1
+    },
+    "yyyy": {
+        "titulo": "yyyy",
+        "code": "0004",
+        "edit": "yyyy",
+        "area": "iiiii",
+        "ano": "2020",
+        "valor": 20.0,
+        "estoque": 1
     }
 }

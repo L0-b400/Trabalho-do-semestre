@@ -60,7 +60,7 @@ como por exemplo o numero 1:
         BuscaNome():
         seta var livros novamente pra pegar as infos do json (eu usei assim pq cada função separada armazena de certa forma temporariamente as infos para mostrar no front entao nao tem problema de ter o mesmo nome, mas entendo que na pratica e pra futuras manutenções pode me dificultar porem sempre mostra no log qual a def que ta dando problema)
         seta var nome_busca com input pra pegar o dado do usuario
-        depois eu descobri um negocio incrivel mas ainda nao dominei 100%
+        depois eu descobri um negocio incrivel
 
         que seria uma forma dinamica de usar uma lista 
 
@@ -77,6 +77,8 @@ como por exemplo o numero 1:
 
         dps um if com for livro in encontrados para achar o livro e printar
         e um else nesse if pro caso de nao ter livro com esse nome
+
+	porque nesse caso ele cria uma nova lista somente com o indicado no input do usuario
 
         BuscaCat é basicamente a mesma coisa so que com a var catega pra 
         pegar o dado do usuario
