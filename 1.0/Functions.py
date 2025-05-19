@@ -1,3 +1,6 @@
+import os
+import Classes
+
 def ListarLivros(bib):
     livros = bib.carregar()
     if not livros:
@@ -73,3 +76,29 @@ def BuscaValue(bib):
             print(livro)
     else:
         print("Nenhum livro encontrado com esse valor de estoque.")
+
+def buscaGlobal():
+    codigo = input("Informe o código que deseja buscar: ")
+    if not os.path.exists("filiais.txt"):
+        print("Nenhuma filial cadastrada.")
+        return
+
+    encontrado = False
+
+    with open("filiais.txt", "r", encoding="utf-8") as f:
+        linhas = f.readlines()
+
+    for linha in linhas:
+        partes = linha.strip().split("|")
+        if len(partes) >= 4:
+            codeFilial, nome, endereco, telefone = partes
+            biblioteca = Classes.Biblioteca(codeFilial)
+            livros = biblioteca.carregar()
+            for livro in livros.values():
+                if livro.code == codigo:
+                    print(f"\n#FL{codeFilial}, {nome}, {endereco}, {telefone}")
+                    print(livro)
+                    encontrado = True
+
+    if not encontrado:
+        print("Nenhum livro encontrado com esse código.")
